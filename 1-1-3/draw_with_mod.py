@@ -13,6 +13,7 @@ y = -150
 
 # height of tower and a counter for each floor
 num_floors = 63
+color = "gray"
 
 # iterate
 for floor in range(num_floors):
@@ -20,12 +21,17 @@ for floor in range(num_floors):
     painter.penup()
     painter.goto(x, y)
 
-    # changing the progam to modify the color every three floors
-    if floor % 6 == 0:
-        painter.color("grey")
-    if floor % 6 == 3:
-        painter.color("blue")
+    if floor % 3 == 0:
+        if color == "gray":
+            color = "blue"
+        else:
+            color = "gray"
 
+    if floor % 21 == 0 and floor > 0:
+        x = x + 75
+        y = -150
+
+    painter.color(color)
     y = y + 5  # location of next floor
 
     # draw the floor
