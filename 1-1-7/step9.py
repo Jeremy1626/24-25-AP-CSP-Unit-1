@@ -12,23 +12,22 @@ turtle_colors = ["red", "blue", "green", "orange", "purple", "gold"]
 for s in turtle_shapes:
   t = trtl.Turtle(shape=s)
   t.color(turtle_colors[s.index(s)])
-  index += 1
   t.penup()
   my_turtles.append(t)
 
-#
+
 startx = 0
 starty = 0
-
-#
+direction = 90
 for t in my_turtles:
   t.goto(startx, starty)
+  t.setheading(direction)
   t.pendown()
   t.right(45)
   t.forward(50)
-#
-  startx = startx + 50
-  starty = starty + 50
+  direction = t.heading ()
+  startx = t.xcor()
+  starty = t.ycor()
 
 wn = trtl.Screen()
 wn.mainloop()
